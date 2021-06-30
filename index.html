@@ -1,30 +1,39 @@
 <div id="resultat"></div>
+<div id="nombreEssai"></div>
 
 <script>
     let min=1;
     let max=1000;
-    let essai = 0;
-    let nombre = Math.floor(Math.random()*(max-min)) + min;
+    let essai = 5;
+    let nombre = nombreRandom(min, max)
     function verifier(){
-        if (essai<5){
+        if (essai>0){
             let proposition = Number(prompt("Choisissez un nombre entre 1 et 1000"))
             if (proposition == nombre){
                 document.getElementById("resultat").innerHTML="Vous avez gagné"
+                document.getElementById("nombreEssai").innerHTML=""
             }
             else if (proposition>nombre){
                 document.getElementById("resultat").innerHTML="Nombre trop grand"
-                essai++
+                essai--
+                document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
                 verifier()
             }
             else {
                 document.getElementById("resultat").innerHTML="Nombre trop petit"
-                essai++
+                essai--
+                document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
                 verifier()
             }
         }
         else {
             document.getElementById("resultat").innerHTML="Vous avez perdu"
+            document.getElementById("nombreEssai").innerHTML=""
+
         }
+    }
+    function nombreRandom(max, min){
+        return Math.floor(Math.random()*(max-min)) + min
     }
     verifier()
 </script>
