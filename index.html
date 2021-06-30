@@ -17,18 +17,21 @@
                 document.getElementById("resultat").innerHTML="Nombre trop grand"
                 essai--
                 document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
+                document.write(proposition+", ")
                 verifier()
             }
             else {
                 document.getElementById("resultat").innerHTML="Nombre trop petit"
                 essai--
                 document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
+                document.write(proposition+", ")
                 verifier()
             }
         }
         else {
             document.getElementById("resultat").innerHTML="Vous avez perdu"
             document.getElementById("nombreEssai").innerHTML=""
+            document.write("il fallait trouver "+nombre)
 
         }
     }
