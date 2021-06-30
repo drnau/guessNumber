@@ -3,20 +3,27 @@
 <script>
     let min=1;
     let max=1000;
+    let essai = 0;
     let nombre = Math.floor(Math.random()*(max-min)) + min;
     function verifier(){
-        let proposition = Number(prompt("Choisissez un nombre entre 1 et 1000"))
-        if (proposition == nombre){
-            document.getElementById("resultat").innerHTML="Vous avez gagné"
-
-        }
-        else if (proposition>nombre){
-            document.getElementById("resultat").innerHTML="Nombre trop grand"
-            verifier()
+        if (essai<5){
+            let proposition = Number(prompt("Choisissez un nombre entre 1 et 1000"))
+            if (proposition == nombre){
+                document.getElementById("resultat").innerHTML="Vous avez gagné"
+            }
+            else if (proposition>nombre){
+                document.getElementById("resultat").innerHTML="Nombre trop grand"
+                essai++
+                verifier()
+            }
+            else {
+                document.getElementById("resultat").innerHTML="Nombre trop petit"
+                essai++
+                verifier()
+            }
         }
         else {
-            document.getElementById("resultat").innerHTML="Nombre trop petit"
-            verifier()
+            document.getElementById("resultat").innerHTML="Vous avez perdu"
         }
     }
     verifier()
