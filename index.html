@@ -1,0 +1,17 @@
+<div id="resultat"></div>
+
+<script>
+    let nombre = 4
+    function verifier(){
+        let proposition = Number(prompt("Choisissez un nombre entre 1 et 10"))
+        if (proposition == nombre){
+            document.getElementById("resultat").innerHTML="Vous avez gagné"
+
+        }
+        else {
+            document.getElementById("resultat").innerHTML="Vous avez perdu, retentez votre chance"
+            verifier()
+        }
+    }
+    verifier()
+</script>
