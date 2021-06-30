@@ -1,42 +1,42 @@
-<div id="resultat"></div>
-<div id="nombreEssai"></div>
-
+<input type="number" id="userNumber" >
+<button onclick="verifier()">Essayer</button><br>
+<div id="resultat"></div><br>
+<div id="nombreEssai"></div><br>
+<div id="essai"></div><br>
+<div id="nombre"></div>
 <script>
     let min=1;
     let max=1000;
     let essai = 5;
     let nombre = nombreRandom(min, max)
     function verifier(){
+        essai--
+        let proposition = document.getElementById("userNumber").value
         if (essai>0){
-            let proposition = Number(prompt("Choisissez un nombre entre 1 et 1000"))
-            if (proposition == nombre){
+                if (proposition == nombre){
                 document.getElementById("resultat").innerHTML="Vous avez gagné"
                 document.getElementById("nombreEssai").innerHTML=""
             }
             else if (proposition>nombre){
                 document.getElementById("resultat").innerHTML="Nombre trop grand"
-                essai--
                 document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
-                document.write(proposition+", ")
-                verifier()
+                document.getElementById("essai").innerHTML+= ""+proposition+", "
             }
             else {
                 document.getElementById("resultat").innerHTML="Nombre trop petit"
-                essai--
                 document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
-                document.write(proposition+", ")
-                verifier()
+                document.getElementById("essai").innerHTML+= ""+proposition+", "
             }
         }
         else {
             document.getElementById("resultat").innerHTML="Vous avez perdu"
             document.getElementById("nombreEssai").innerHTML=""
-            document.write("il fallait trouver "+nombre)
+            document.getElementById("essai").innerHTML+= ""+proposition+", "
+            document.getElementById("nombre").innerHTML="Il fallait trouver "+nombre
 
         }
     }
     function nombreRandom(max, min){
         return Math.floor(Math.random()*(max-min)) + min
     }
-    verifier()
 </script>
