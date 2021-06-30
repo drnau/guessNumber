@@ -1,42 +1,45 @@
-<input type="number" id="userNumber" >
+<form action="" method="GET">
+<input type="number" id="userNumber">
 <button onclick="verifier()">Essayer</button><br>
+</form>
 <div id="resultat"></div><br>
 <div id="nombreEssai"></div><br>
 <div id="essai"></div><br>
 <div id="nombre"></div>
 <script>
-    let min=1;
-    let max=1000;
+    let min = 1;
+    let max = 1000;
     let essai = 5;
     let nombre = nombreRandom(min, max)
-    function verifier(){
+    function verifier() {
+        event.preventDefault()
         essai--
         let proposition = document.getElementById("userNumber").value
-        if (essai>0){
-                if (proposition == nombre){
-                document.getElementById("resultat").innerHTML="Vous avez gagné"
-                document.getElementById("nombreEssai").innerHTML=""
+        if (essai > 0) {
+            if (proposition == nombre) {
+                document.getElementById("resultat").innerHTML = "Vous avez gagné"
+                document.getElementById("nombreEssai").innerHTML = ""
             }
-            else if (proposition>nombre){
-                document.getElementById("resultat").innerHTML="Nombre trop grand"
-                document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
-                document.getElementById("essai").innerHTML+= ""+proposition+", "
+            else if (proposition > nombre) {
+                document.getElementById("resultat").innerHTML = "Nombre trop grand"
+                document.getElementById("nombreEssai").innerHTML = "il vous reste " + essai + " tentatives"
+                document.getElementById("essai").innerHTML += "" + proposition + ", "
             }
             else {
-                document.getElementById("resultat").innerHTML="Nombre trop petit"
-                document.getElementById("nombreEssai").innerHTML="il vous reste "+essai+" tentatives"
-                document.getElementById("essai").innerHTML+= ""+proposition+", "
+                document.getElementById("resultat").innerHTML = "Nombre trop petit"
+                document.getElementById("nombreEssai").innerHTML = "il vous reste " + essai + " tentatives"
+                document.getElementById("essai").innerHTML += "" + proposition + ", "
             }
         }
         else {
-            document.getElementById("resultat").innerHTML="Vous avez perdu"
-            document.getElementById("nombreEssai").innerHTML=""
-            document.getElementById("essai").innerHTML+= ""+proposition+", "
-            document.getElementById("nombre").innerHTML="Il fallait trouver "+nombre
+            document.getElementById("resultat").innerHTML = "Vous avez perdu"
+            document.getElementById("nombreEssai").innerHTML = ""
+            document.getElementById("essai").innerHTML += "" + proposition + ", "
+            document.getElementById("nombre").innerHTML = "Il fallait trouver " + nombre
 
         }
     }
-    function nombreRandom(max, min){
-        return Math.floor(Math.random()*(max-min)) + min
+    function nombreRandom(max, min) {
+        return Math.floor(Math.random() * (max - min)) + min
     }
 </script>
